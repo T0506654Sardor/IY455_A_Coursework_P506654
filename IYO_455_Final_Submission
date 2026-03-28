@@ -1,0 +1,496 @@
+create database DVD_Loan_System_Data;
+use DVD_Loan_System_Data;
+
+
+create table Borrower(
+    borrower_number varchar(50) primary key,
+    borrower_name varchar(50),
+    borrower_address varchar(50),
+    borrower_status varchar(50)
+);
+
+insert into Borrower values
+('BN1721', 'Ben Jones', '28 Low Road, Nottingham NG5 3PB', 'Active'),
+('BN2044', 'Sara Ahmed', '14 Duke Street, Leicester LE1 5XY', 'Suspended'),
+('BN3155', 'Tom Wilson', '7 Meadow Lane, Sheffield S2 4AA', 'Dormant'),
+('BN4888', 'Amina Khan', '21 Park Avenue, Derby DE1 2LM', 'Active'),
+('BN5099', 'David Smith', '18 Queen Street, Leeds LS1 2AB', 'Active'),
+('BN6110', 'Priya Patel', '44 Market Road, Birmingham B1 1AA', 'Active'),
+('BN7221', 'Omar Hassan', '9 King Street, Nottingham NG1 5BR', 'Dormant'),
+('BN8332', 'Emily Clark', '55 Park Lane, Manchester M1 4FG', 'Active'),
+('BN9443', 'Michael Brown', '12 High Street, Coventry CV1 2AB', 'Suspended'),
+('BN1054', 'Sofia Rossi', '73 Elm Road, Oxford OX1 3PQ', 'Active'),
+('BN1165', 'Liam Murphy', '8 Station Road, Bristol BS1 4TU', 'Active'),
+('BN1276', 'Chloe Taylor', '31 Crescent Avenue, Liverpool L1 8JQ', 'Dormant'),
+('BN1387', 'Hassan Ali', '16 Albert Road, London E1 6AN', 'Active'),
+('BN1498', 'Grace Lee', '29 Victoria Street, York YO1 6RL', 'Active'),
+('BN1609', 'Noah White', '2 The Green, Derby DE22 1AA', 'Terminated'),
+('BN1710', 'Fatima Yusuf', '40 Chapel Street, Leicester LE2 3BX', 'Active'),
+('BN1821', 'Ethan King', '11 Mill Lane, Sheffield S1 2EH', 'Dormant'),
+('BN1932', 'Mia Johnson', '19 School Road, Nottingham NG7 2CD', 'Suspended'),
+('BN2043', 'Jack Hall', '27 Bridge Street, Leeds LS2 7RS', 'Active'),
+('BN2154', 'Olivia Scott', '5 Orchard Way, Coventry CV3 1DF', 'Active'),
+('BN2265', 'Ryan Adams', '64 Church Lane, Bristol BS2 0GH', 'Dormant'),
+('BN2376', 'Layla Ahmed', '14 Park View, Birmingham B2 4KL', 'Active'),
+('BN2487', 'Adam Wilson', '88 Lake Road, Manchester M20 3PQ', 'Active'),
+('BN2598', 'Nora Brown', '23 Grove Street, Oxford OX2 7YY', 'Active'),
+('BN2709', 'Youssef Khan', '15 Tower Street, London E2 8RT', 'Suspended'),
+('BN2810', 'Hannah Green', '10 River Road, York YO10 5EE', 'Active'),
+('BN2921', 'Daniel Turner', '61 Hill Top, Liverpool L9 7HY', 'Dormant'),
+('BN3032', 'Amelia Wood', '17 Beech Avenue, Nottingham NG3 4JT', 'Active'),
+('BN3143', 'Lucas Hill', '34 Willow Street, Derby DE3 9LP', 'Active'),
+('BN9001', 'Oliver Smith', '1 New Street, Nottingham NG1 1AA', 'Active'),
+('BN9002', 'Emily Brown', '2 River Road, Leicester LE1 1BB', 'Active'),
+('BN9003', 'Grace Taylor', '3 Park Avenue, Derby DE1 1CC', 'Active'),
+('BN9004', 'Noah Wilson', '4 Hill Lane, Leeds LS1 1DD', 'Dormant'),
+('BN3254', 'Zara Young', '3 Rose Close, Leicester LE3 6QM', 'Active');
+
+
+create table DVD_title(
+    DVD_number varchar(50) primary key,
+    DVD_title varchar(50),
+    DVD_starring_actor varchar(50),
+    DVD_year int,
+    rental_category varchar(50)
+);
+
+insert into DVD_title values
+('DN198', 'Raiders of the Lost Ark', 'Harrison Ford', 1981, 'Adventure'),
+('DN9829', 'John Wick', 'Keanu Reeves', 2014, 'Action'),
+('DN5734', 'Toy Story', 'Tom Hanks', 1995, 'Family'),
+('DN4456', 'Titanic', 'Leonardo DiCaprio', 1997, 'Romance'),
+('DN6677', 'The Matrix', 'Keanu Reeves', 1999, 'Sci-Fi'),
+('DN3001', 'Jurassic Park', 'Sam Neill', 1993, 'Adventure'),
+('DN3002', 'The Shawshank Redemption', 'Tim Robbins', 1994, 'Drama'),
+('DN3003', 'The Godfather', 'Marlon Brando', 1972, 'Crime'),
+('DN3004', 'Forrest Gump', 'Tom Hanks', 1994, 'Drama'),
+('DN3005', 'Back to the Future', 'Michael J. Fox', 1985, 'Sci-Fi'),
+('DN3006', 'The Dark Knight', 'Christian Bale', 2008, 'Action'),
+('DN3007', 'Finding Nemo', 'Albert Brooks', 2003, 'Animation'),
+('DN3008', 'The Lion King', 'Matthew Broderick', 1994, 'Family'),
+('DN3009', 'Gladiator', 'Russell Crowe', 2000, 'Action'),
+('DN3010', 'Interstellar', 'Matthew McConaughey', 2014, 'Sci-Fi'),
+('DN3011', 'Inception', 'Leonardo DiCaprio', 2010, 'Thriller'),
+('DN3012', 'Pulp Fiction', 'John Travolta', 1994, 'Crime'),
+('DN3013', 'The Terminator', 'Arnold Schwarzenegger', 1984, 'Action'),
+('DN3014', 'E.T. the Extra-Terrestrial', 'Henry Thomas', 1982, 'Family'),
+('DN3015', 'Jurassic World', 'Chris Pratt', 2015, 'Adventure'),
+('DN3016', 'Spider-Man', 'Tobey Maguire', 2002, 'Action'),
+('DN3017', 'Harry Potter and the Sorcerer''s Stone', 'Daniel Radcliffe', 2001, 'Fantasy'),
+('DN3018', 'The Notebook', 'Ryan Gosling', 2004, 'Romance'),
+('DN3019', 'Avatar', 'Sam Worthington', 2009, 'Sci-Fi'),
+('DN3020', 'The Avengers', 'Robert Downey Jr.', 2012, 'Action'),
+('DN3021', 'Home Alone', 'Macaulay Culkin', 1990, 'Comedy'),
+('DN3022', 'Jumanji', 'Robin Williams', 1995, 'Adventure'),
+('DN3023', 'The Silence of the Lambs', 'Jodie Foster', 1991, 'Thriller'),
+('DN3024', 'Coco', 'Anthony Gonzalez', 2017, 'Animation'),
+('DN9001', 'Superhero United', 'Chris Evans', 2018, 'Superhero'),
+('DN9002', 'Laugh Factory', 'Jack Whitehall', 2024, 'Comedy'),
+('DN9003', 'Midnight Hero', 'Ana de Armas', 2019, 'Superhero'),
+('DN9004', 'Lonely Archive', 'Emma Stone', 2022, 'Drama'),
+('DN3025', 'The Green Mile', 'Tom Hanks', 1999, 'Drama');
+
+
+create table Rental_category(
+    DVD_number varchar(50) primary key,
+    rental_category varchar(50),
+    rental_cost double
+);
+
+insert into Rental_category values
+('DN198', 'Adventure', 3.50),
+('DN9829', 'Action', 4.50),
+('DN5734', 'Family', 2.50),
+('DN4456', 'Romance', 3.00),
+('DN6677', 'Sci-Fi', 4.00),
+('DN3001', 'Adventure', 3.50),
+('DN3002', 'Drama', 3.00),
+('DN3003', 'Crime', 3.50),
+('DN3004', 'Drama', 3.00),
+('DN3005', 'Sci-Fi', 4.00),
+('DN3006', 'Action', 4.50),
+('DN3007', 'Animation', 2.50),
+('DN3008', 'Family', 2.50),
+('DN3009', 'Action', 4.50),
+('DN3010', 'Sci-Fi', 4.00),
+('DN3011', 'Thriller', 3.50),
+('DN3012', 'Crime', 3.50),
+('DN3013', 'Action', 4.50),
+('DN3014', 'Family', 2.50),
+('DN3015', 'Adventure', 3.50),
+('DN3016', 'Action', 4.50),
+('DN3017', 'Fantasy', 4.00),
+('DN3018', 'Romance', 3.00),
+('DN3019', 'Sci-Fi', 4.00),
+('DN3020', 'Action', 4.50),
+('DN3021', 'Comedy', 2.50),
+('DN3022', 'Adventure', 3.50),
+('DN3023', 'Thriller', 3.50),
+('DN3024', 'Animation', 2.50),
+('DN9001', 'Superhero', 6.50),
+('DN9002', 'Comedy', 2.50),
+('DN9003', 'Superhero', 6.00),
+('DN9004', 'Drama', 4.00),
+('DN3025', 'Drama', 3.00);
+
+
+
+create table Copy(
+    copy_number varchar(50) primary key,
+    DVD_number varchar(50),
+    shelf_position varchar(50),
+    DVD_status varchar(50),
+
+    CONSTRAINT fk_dvd_title
+    FOREIGN KEY (DVD_number)
+    REFERENCES DVD_title(DVD_number),
+
+    CONSTRAINT fk_rental_category
+    FOREIGN KEY (DVD_number)
+    REFERENCES Rental_category(DVD_number)
+);
+
+insert into Copy values
+('CN1099', 'DN198', 'AV123', 'Available'),
+('CN8739', 'DN9829', 'AC8728', 'On Loan'),
+('CN5521', 'DN5734', 'BF300', 'Available'),
+('CN7788', 'DN4456', 'CF420', 'On Loan'),
+('CN9910', 'DN6677', 'DF905', 'Available'),
+('CN1101', 'DN198', 'AV124', 'Available'),
+('CN1102', 'DN9829', 'AC8290', 'Reserved'),
+('CN1103', 'DN5734', 'BF301', 'Available'),
+('CN1104', 'DN4456', 'CF421', 'Available'),
+('CN1105', 'DN6677', 'DF906', 'Overdue'),
+('CN1106', 'DN3001', 'AG120', 'Available'),
+('CN1107', 'DN3002', 'AG121', 'Missing'),
+('CN1108', 'DN3003', 'AH220', 'Available'),
+('CN1109', 'DN3004', 'AH221', 'Available'),
+('CN1110', 'DN3005', 'AI320', 'On Loan'),
+('CN1111', 'DN3006', 'AI321', 'Available'),
+('CN1112', 'DN3007', 'AJ410', 'Available'),
+('CN1113', 'DN3008', 'AJ411', 'Available'),
+('CN1114', 'DN3009', 'AK510', 'Reserved'),
+('CN1115', 'DN3010', 'AK511', 'Available'),
+('CN1116', 'DN3011', 'AL610', 'On Loan'),
+('CN1117', 'DN3012', 'AL611', 'Available'),
+('CN1118', 'DN3013', 'AM710', 'Available'),
+('CN1119', 'DN3014', 'AM711', 'Available'),
+('CN1120', 'DN3015', 'AN810', 'Available'),
+('CN1121', 'DN3016', 'AN811', 'On Loan'),
+('CN1122', 'DN3017', 'AO910', 'Available'),
+('CN1123', 'DN3018', 'AO911', 'Available'),
+('CN1124', 'DN3019', 'AP010', 'Available'),
+('CN9001', 'DN9001', 'SP100', 'Available'),
+('CN9002', 'DN9003', 'SP101', 'On Loan'),
+('CN9003', 'DN9002', 'CO200', 'On Loan'),
+('CN9004', 'DN9004', 'DR300', 'Available'),
+('CN9005', 'DN9002', 'CO201', 'Available'),
+('CN9006', 'DN9001', 'SP102', 'On Loan'),
+('CN1125', 'DN3020', 'AP011', 'Available');
+
+
+create table Loan_info(
+    loan_number varchar(50) primary key,
+    borrower_number varchar(50),
+    loan_date date,
+    total_loan_cost double,
+
+    CONSTRAINT fk_borrower_number
+    FOREIGN KEY (borrower_number)
+    REFERENCES Borrower(borrower_number)
+);
+
+insert into Loan_info values
+('LN74857', 'BN1721', '2002-02-06', 7.00),
+('LN74858', 'BN2044', '2002-02-13', 9.00),
+('LN74859', 'BN3155', '2002-02-20', 5.00),
+('LN74860', 'BN4888', '2002-02-27', 6.00),
+('LN74861', 'BN5099', '2002-03-06', 8.00),
+('LN74862', 'BN6110', '2002-03-13', 6.50),
+('LN74863', 'BN7221', '2002-03-20', 6.50),
+('LN74864', 'BN8332', '2002-03-27', 8.50),
+('LN74865', 'BN9443', '2002-04-03', 5.00),
+('LN74866', 'BN1054', '2002-04-10', 8.50),
+('LN74867', 'BN1721', '2002-04-17', 7.00),
+('LN74868', 'BN2044', '2002-04-24', 7.00),
+('LN74869', 'BN3155', '2002-05-01', 8.00),
+('LN74870', 'BN4888', '2002-05-08', 7.00),
+('LN74871', 'BN5099', '2002-05-15', 8.50),
+('LN74872', 'BN6110', '2002-05-22', 7.00),
+('LN74873', 'BN7221', '2002-05-29', 9.00),
+('LN74874', 'BN8332', '2002-06-05', 5.00),
+('LN74875', 'BN9443', '2002-06-12', 6.00),
+('LN74876', 'BN1054', '2002-06-19', 8.00),
+('LN74877', 'BN1721', '2002-06-26', 6.50),
+('LN74878', 'BN2044', '2002-07-03', 6.50),
+('LN74879', 'BN3155', '2002-07-10', 8.50),
+('LN74880', 'BN4888', '2002-07-17', 5.00),
+('LN74881', 'BN5099', '2002-07-24', 8.50),
+('LN74882', 'BN6110', '2002-07-31', 7.00),
+('LN74883', 'BN7221', '2002-08-07', 7.00),
+('LN74884', 'BN8332', '2002-08-14', 8.00),
+('LN74885', 'BN9443', '2002-08-21', 7.00),
+('LN90001', 'BN9001', '2026-02-01', 6.50),
+('LN90002', 'BN9001', '2026-02-08', 6.50),
+('LN90003', 'BN9001', '2026-02-15', 6.50),
+('LN90004', 'BN9002', '2026-03-16', 2.50),
+('LN90005', 'BN9003', '2026-03-20', 6.00),
+('LN90006', 'BN9004', '2026-03-24', 6.50),
+('LN74886', 'BN1054', '2002-08-28', 8.50);
+
+
+create table Loan_details(
+    loan_number varchar(50),
+    copy_number varchar(50),
+    return_due_date date,
+    date_borrower_returned date,
+
+    CONSTRAINT fk_copy_number
+    FOREIGN KEY (copy_number)
+    REFERENCES Copy(copy_number),
+
+    CONSTRAINT fk_loan_number
+    FOREIGN KEY (loan_number)
+    REFERENCES Loan_info(loan_number)
+);
+
+insert into Loan_details values
+('LN74857', 'CN1099', '2002-02-13', '2002-02-14'),
+('LN74857', 'CN1101', '2002-02-13', '2002-02-13'),
+('LN74858', 'CN8739', '2002-02-20', '2002-02-20'),
+('LN74858', 'CN1102', '2002-02-20', '2002-02-20'),
+('LN74859', 'CN5521', '2002-02-23', '2002-02-23'),
+('LN74859', 'CN1103', '2002-02-23', '2002-02-25'),
+('LN74860', 'CN7788', '2002-03-06', '2002-03-07'),
+('LN74860', 'CN1104', '2002-03-06', '2002-03-09'),
+('LN74861', 'CN9910', '2002-03-13', '2002-03-15'),
+('LN74861', 'CN1105', '2002-03-13', '2002-03-13'),
+('LN74862', 'CN1106', '2002-03-20', '2002-03-20'),
+('LN74862', 'CN1107', '2002-03-20', '2002-03-22'),
+('LN74863', 'CN1108', '2002-03-27', '2002-03-28'),
+('LN74863', 'CN1109', '2002-03-27', '2002-03-27'),
+('LN74864', 'CN1110', '2002-04-03', '2002-04-04'),
+('LN74864', 'CN1111', '2002-04-03', '2002-04-06'),
+('LN74865', 'CN1112', '2002-04-06', '2002-04-06'),
+('LN74865', 'CN1113', '2002-04-06', '2002-04-08'),
+('LN74866', 'CN1114', '2002-04-17', '2002-04-18'),
+('LN74866', 'CN1115', '2002-04-17', NULL),
+('LN74867', 'CN1116', '2002-04-24', '2002-04-25'),
+('LN74867', 'CN1117', '2002-04-24', '2002-04-24'),
+('LN74868', 'CN1118', '2002-05-01', '2002-05-02'),
+('LN74868', 'CN1119', '2002-04-27', '2002-04-30'),
+('LN74869', 'CN1120', '2002-05-08', '2002-05-09'),
+('LN74869', 'CN1121', '2002-05-08', '2002-05-08'),
+('LN74870', 'CN1122', '2002-05-15', '2002-05-15'),
+('LN74870', 'CN1123', '2002-05-15', '2002-05-15'),
+('LN74871', 'CN1124', '2002-05-22', '2002-05-24'),
+('LN74871', 'CN1125', '2002-05-22', '2002-05-22'),
+('LN74872', 'CN1099', '2002-05-29', '2002-05-30'),
+('LN74872', 'CN1101', '2002-05-29', '2002-06-01'),
+('LN74873', 'CN8739', '2002-06-05', '2002-06-06'),
+('LN74873', 'CN1102', '2002-06-05', '2002-06-05'),
+('LN74874', 'CN5521', '2002-06-08', '2002-06-08'),
+('LN74874', 'CN1103', '2002-06-08', '2002-06-10'),
+('LN74875', 'CN7788', '2002-06-19', '2002-06-20'),
+('LN74875', 'CN1104', '2002-06-19', '2002-06-19'),
+('LN74876', 'CN9910', '2002-06-26', '2002-06-27'),
+('LN74876', 'CN1105', '2002-06-26', NULL),
+('LN74877', 'CN1106', '2002-07-03', '2002-07-03'),
+('LN74877', 'CN1107', '2002-07-03', '2002-07-05'),
+('LN74878', 'CN1108', '2002-07-10', '2002-07-10'),
+('LN74878', 'CN1109', '2002-07-10', '2002-07-10'),
+('LN74879', 'CN1110', '2002-07-17', '2002-07-18'),
+('LN74879', 'CN1111', '2002-07-17', '2002-07-17'),
+('LN74880', 'CN1112', '2002-07-20', '2002-07-21'),
+('LN74880', 'CN1113', '2002-07-20', '2002-07-23'),
+('LN74881', 'CN1114', '2002-07-31', '2002-08-02'),
+('LN74881', 'CN1115', '2002-07-31', '2002-07-31'),
+('LN74882', 'CN1116', '2002-08-07', '2002-08-07'),
+('LN74882', 'CN1117', '2002-08-07', '2002-08-07'),
+('LN74883', 'CN1118', '2002-08-14', '2002-08-14'),
+('LN74883', 'CN1119', '2002-08-10', '2002-08-12'),
+('LN74884', 'CN1120', '2002-08-21', '2002-08-22'),
+('LN74884', 'CN1121', '2002-08-21', '2002-08-24'),
+('LN74885', 'CN1122', '2002-08-28', '2002-08-29'),
+('LN74885', 'CN1123', '2002-08-28', '2002-08-28'),
+('LN90001', 'CN9001', '2026-02-08', '2026-02-12'),
+('LN90002', 'CN9002', '2026-02-15', '2026-02-20'),
+('LN90003', 'CN9006', '2026-02-22', NULL),
+('LN90004', 'CN9003', '2026-03-27', NULL),
+('LN90005', 'CN9002', '2026-04-10', NULL),
+('LN90006', 'CN9006', '2026-04-05', NULL),
+('LN74886', 'CN1125', '2002-09-04', NULL);
+
+
+create table Loan(
+    loan_number varchar(50) primary key,
+    borrower_total_fine double,
+    borrower_individual_fine double,
+
+    CONSTRAINT fk_loan_info
+    FOREIGN KEY (loan_number)
+    REFERENCES Loan_info(loan_number)
+);
+
+insert into Loan values
+('LN74857', 0.50, 0.50),
+('LN74858', 0.00, 0.00),
+('LN74859', 1.00, 1.00),
+('LN74860', 2.00, 1.50),
+('LN74861', 1.00, 1.00),
+('LN74862', 1.00, 1.00),
+('LN74863', 0.50, 0.50),
+('LN74864', 2.00, 1.50),
+('LN74865', 1.00, 1.00),
+('LN74866', 0.50, 0.50),
+('LN74867', 0.50, 0.50),
+('LN74868', 2.00, 1.50),
+('LN74869', 0.50, 0.50),
+('LN74870', 0.00, 0.00),
+('LN74871', 1.00, 1.00),
+('LN74872', 2.00, 1.50),
+('LN74873', 0.50, 0.50),
+('LN74874', 1.00, 1.00),
+('LN74875', 0.50, 0.50),
+('LN74876', 0.50, 0.50),
+('LN74877', 1.00, 1.00),
+('LN74878', 0.00, 0.00),
+('LN74879', 0.50, 0.50),
+('LN74880', 2.00, 1.50),
+('LN74881', 1.00, 1.00),
+('LN74882', 0.00, 0.00),
+('LN74883', 1.00, 1.00),
+('LN74884', 2.00, 1.50),
+('LN74885', 0.50, 0.50),
+('LN90001', 5.00, 5.00),
+('LN90002', 7.50, 7.50),
+('LN90003', 9.50, 9.50),
+('LN90004', 0.00, 0.00),
+('LN90005', 0.00, 0.00),
+('LN90006', 1.00, 1.00),
+('LN74886', 0.50, 0.50);
+
+
+
+
+SELECT DISTINCT
+    b.borrower_number,
+    b.borrower_name,
+    b.borrower_address,
+    b.borrower_status,
+    li.loan_number,
+    li.loan_date,
+    d.DVD_title,
+    c.copy_number
+FROM Borrower b
+JOIN Loan_info li ON li.borrower_number = b.borrower_number
+JOIN Loan_details ld ON ld.loan_number = li.loan_number
+JOIN Copy c ON c.copy_number = ld.copy_number
+JOIN DVD_title d ON d.DVD_number = c.DVD_number
+WHERE ld.date_borrower_returned IS NULL
+ORDER BY b.borrower_name;
+
+
+
+
+
+
+SELECT
+    b.borrower_number,
+    b.borrower_name,
+    li.loan_number,
+    d.DVD_title,
+    DATEDIFF(CURDATE(), ld.return_due_date) AS overdue_days
+FROM Borrower b
+JOIN Loan_info li ON li.borrower_number = b.borrower_number
+JOIN Loan_details ld ON ld.loan_number = li.loan_number
+JOIN Copy c ON c.copy_number = ld.copy_number
+JOIN DVD_title d ON d.DVD_number = c.DVD_number
+WHERE ld.date_borrower_returned IS NULL
+  AND ld.return_due_date < CURDATE()
+ORDER BY overdue_days DESC;
+
+
+
+
+
+SELECT DISTINCT
+    b.borrower_number,
+    b.borrower_name,
+    d.DVD_title,
+    d.rental_category,
+    li.loan_date
+FROM Borrower b
+JOIN Loan_info li ON li.borrower_number = b.borrower_number
+JOIN Loan_details ld ON ld.loan_number = li.loan_number
+JOIN Copy c ON c.copy_number = ld.copy_number
+JOIN DVD_title d ON d.DVD_number = c.DVD_number
+WHERE d.rental_category = 'Comedy'
+  AND li.loan_date >= DATE_SUB(CURDATE(), INTERVAL 4 WEEK)
+ORDER BY li.loan_date;
+
+
+
+
+
+SELECT
+    b.borrower_number,
+    b.borrower_name,
+    b.borrower_address,
+    b.borrower_status,
+    COUNT(l.borrower_individual_fine) AS number_of_fines,
+    SUM(l.borrower_individual_fine) AS total_money_owed
+FROM Borrower b
+JOIN Loan_info li ON li.borrower_number = b.borrower_number
+JOIN Loan l ON l.loan_number = li.loan_number
+GROUP BY
+    b.borrower_number,
+    b.borrower_name,
+    b.borrower_address,
+    b.borrower_status
+ORDER BY number_of_fines DESC
+LIMIT 1;
+
+
+
+
+
+
+UPDATE Rental_category rc
+JOIN DVD_title dt ON dt.DVD_number = rc.DVD_number
+SET rc.rental_cost = 5.50
+WHERE dt.DVD_year >= 2015
+  AND dt.rental_category = 'Superhero';
+
+SELECT
+    dt.DVD_number,
+    dt.DVD_title,
+    dt.DVD_year,
+    dt.rental_category,
+    rc.rental_cost
+FROM DVD_title dt
+JOIN Rental_category rc ON rc.DVD_number = dt.DVD_number
+WHERE dt.DVD_year >= 2015
+  AND dt.rental_category = 'Superhero';
+
+
+
+
+
+
+CREATE TEMPORARY TABLE dvds_to_delete AS
+SELECT dt.DVD_number
+FROM DVD_title dt
+LEFT JOIN Copy c ON c.DVD_number = dt.DVD_number
+LEFT JOIN Loan_details ld ON ld.copy_number = c.copy_number
+GROUP BY dt.DVD_number
+HAVING COUNT(ld.loan_number) = 0;
+
+SELECT * FROM dvds_to_delete;
+
+DELETE FROM DVD_title
+WHERE DVD_number IN (SELECT DVD_number FROM dvds_to_delete);
+
+SELECT * FROM DVD_title;
+
+DROP TEMPORARY TABLE dvds_to_delete;
